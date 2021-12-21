@@ -1,0 +1,362 @@
+
+<!-- saved from url=(0287)https://kg5fw6x9sv.cloud.databricksusercontent.com/static/72e6554be4a818a61d5bc121b20e45d9f00a9eeaaa426472a9acc7750b86817a/static/iframe.html#%7B%22parentUri%22%3A%22https%3A%2F%2Fadb-80944550127301.1.azuredatabricks.net%22%2C%22frameId%22%3A%22bc5084d1-66ba-4507-8758-0dc75697f193%22%7D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style>
+    
+/**
+ * NB: this stylesheet is loaded inline in sandboxed HTML iframes that may contain
+ * arbitrary untrusted content.  Be very careful what rules you add here.
+ */
+body, .mfe-root {
+  background-color: transparent;
+  margin: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#content-wrapper {
+  overflow: auto;
+}
+
+#content-wrapper .markdown {
+  /**
+   * without overriding this, the height is 100% (of the containing block), which is
+   * initially quite small. The content will not fit, and will then depend on the
+   * `overflow` property, which is `hidden`. In theory, `overflow: visible` will expand the
+   * height to fit, but it has a bad interaction with postResizeMessage which causes the div
+   * to keep growing in size under _some_ (ES-9273) circumstances. `height: auto` has the same
+   * effect of allowing the browser to size the div but without the bad effects.
+   **/
+  height: auto;
+}
+
+/**
+ * Approximates the JupyterLab Light theme for display of pandas-like DataFrames.
+ *
+ * TODO: JupyterLab parameterizes theme-able properties using CSS variables.  This
+ * implementation hard-codes them.
+ */
+.dataframe {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  table-layout: fixed;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+.dataframe thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.dataframe tr {
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe th {
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe tbody tr:nth-child(odd) {
+  background: white;
+}
+.dataframe tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+.dataframe tbody tr:hover {
+  background-color: rgb(218, 242, 254);
+}
+.dataframe tbody tr th:only-of-type {
+  vertical-align: middle;
+}
+.dataframe tbody td {
+  font-size: 12px;
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+  </style>
+  <!--<base href="https://adb-80944550127301.1.azuredatabricks.net" target="_blank">--><base href="." target="_blank">
+  <script>
+    (function() {
+      var parentUri = 'https://adb-80944550127301.1.azuredatabricks.net';
+      var originalWidth = null;
+      var originalHeight = null;
+      var scale = 1.0;
+      window.onerror = function(error) {
+        window.parent.postMessage({
+          type: 'frameJsError',
+          loc: window.location.href,
+          frameId: 'bc5084d1-66ba-4507-8758-0dc75697f193',
+          error: error,
+        }, parentUri);
+      };
+      function postResizeMessage() {
+        // There are 3 cases, and we take the first that's available
+        // 1) happy path: content is inlined. We use getBoundingClientRect to capture the dimension
+        //    of (scaled) visible content, including the margin.
+        //    {height, width} is captured via {bottom, right} to include any margin {top, left}.
+        //    This will handle both when there's collapsing margin & not. See go/pr/43508
+        // 2) content is loaded dynamically, in which case getBoundingClientRect().height may be 0.
+        //    we use scroll{Width, Height} to capture the dimension regardless of what's currently
+        //    visible.
+        // 3) source in the iframe attaches to the document body and not the content-wrapper.
+        //    we use document.body.scroll{Width, Height}. See ES-3770
+        var wrapper = document.getElementById('content-wrapper');
+        var rect = wrapper.getBoundingClientRect();
+        var newWidth = (scale && rect.right / scale) || wrapper.scrollWidth || document.body.scrollWidth;
+        var newHeight = (scale && rect.bottom / scale) || wrapper.scrollHeight || document.body.scrollHeight;
+        if (Math.round(newWidth) != Math.round(originalWidth) || Math.round(newHeight) != Math.round(originalHeight)) {
+          originalWidth = newWidth;
+          originalHeight = newHeight;
+          window.parent.postMessage({
+            type: 'frameResizeEvent',
+            frameId: 'bc5084d1-66ba-4507-8758-0dc75697f193',
+            loc: window.location.href,
+            height: originalHeight,
+            width: originalWidth,
+            isAutoScaled: false,
+          }, parentUri);
+        }
+      };
+      // Sync size 4 times per second
+      setInterval(postResizeMessage, 250);
+
+      window.addEventListener('message', function(msg) {
+        var origin = msg.origin || msg.originalEvent.origin;
+        var isExportedHTML = origin === 'null' && parentUri === '*';
+        if (origin !== parentUri && !isExportedHTML) {
+          console.error('Invalid origin', origin, parentUri);
+          return;
+        }
+
+        
+        // set wrapper div's height to be the height of the iframe to make vertical scrolling work
+        var clientHeight = document.getElementsByTagName('body')[0].clientHeight;
+        document.body.style.height = clientHeight + 'px';
+        
+      });
+      
+    })();
+  </script>
+  </head><body style="height: 355px;"><div id="content-wrapper" class=""><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Invoice</th>
+      <th>StockCode</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>InvoiceDate</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Time of Day</th>
+      <th>Price</th>
+      <th>Customer ID</th>
+      <th>Country</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>489434</td>
+      <td>85048</td>
+      <td>15CM CHRISTMAS GLASS BALL 20 LIGHTS</td>
+      <td>12.0</td>
+      <td>2009-12-01 07:45:00</td>
+      <td>12.0</td>
+      <td>2009.0</td>
+      <td>AM</td>
+      <td>6.95</td>
+      <td>13085.0</td>
+      <td>United Kingdom</td>
+      <td>83.40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>489434</td>
+      <td>79323P</td>
+      <td>PINK CHERRY LIGHTS</td>
+      <td>12.0</td>
+      <td>2009-12-01 07:45:00</td>
+      <td>12.0</td>
+      <td>2009.0</td>
+      <td>AM</td>
+      <td>6.75</td>
+      <td>13085.0</td>
+      <td>United Kingdom</td>
+      <td>81.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>489434</td>
+      <td>79323W</td>
+      <td>WHITE CHERRY LIGHTS</td>
+      <td>12.0</td>
+      <td>2009-12-01 07:45:00</td>
+      <td>12.0</td>
+      <td>2009.0</td>
+      <td>AM</td>
+      <td>6.75</td>
+      <td>13085.0</td>
+      <td>United Kingdom</td>
+      <td>81.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>489434</td>
+      <td>22041</td>
+      <td>RECORD FRAME 7" SINGLE SIZE</td>
+      <td>48.0</td>
+      <td>2009-12-01 07:45:00</td>
+      <td>12.0</td>
+      <td>2009.0</td>
+      <td>AM</td>
+      <td>2.10</td>
+      <td>13085.0</td>
+      <td>United Kingdom</td>
+      <td>100.80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>489434</td>
+      <td>21232</td>
+      <td>STRAWBERRY CERAMIC TRINKET BOX</td>
+      <td>24.0</td>
+      <td>2009-12-01 07:45:00</td>
+      <td>12.0</td>
+      <td>2009.0</td>
+      <td>AM</td>
+      <td>1.25</td>
+      <td>13085.0</td>
+      <td>United Kingdom</td>
+      <td>30.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>541905</th>
+      <td>581587</td>
+      <td>22899</td>
+      <td>CHILDREN'S APRON DOLLY GIRL</td>
+      <td>6.0</td>
+      <td>2011-12-09 12:50:00</td>
+      <td>12.0</td>
+      <td>2011.0</td>
+      <td>PM</td>
+      <td>2.10</td>
+      <td>12680.0</td>
+      <td>France</td>
+      <td>12.60</td>
+    </tr>
+    <tr>
+      <th>541906</th>
+      <td>581587</td>
+      <td>23254</td>
+      <td>CHILDRENS CUTLERY DOLLY GIRL</td>
+      <td>4.0</td>
+      <td>2011-12-09 12:50:00</td>
+      <td>12.0</td>
+      <td>2011.0</td>
+      <td>PM</td>
+      <td>4.15</td>
+      <td>12680.0</td>
+      <td>France</td>
+      <td>16.60</td>
+    </tr>
+    <tr>
+      <th>541907</th>
+      <td>581587</td>
+      <td>23255</td>
+      <td>CHILDRENS CUTLERY CIRCUS PARADE</td>
+      <td>4.0</td>
+      <td>2011-12-09 12:50:00</td>
+      <td>12.0</td>
+      <td>2011.0</td>
+      <td>PM</td>
+      <td>4.15</td>
+      <td>12680.0</td>
+      <td>France</td>
+      <td>16.60</td>
+    </tr>
+    <tr>
+      <th>541908</th>
+      <td>581587</td>
+      <td>22138</td>
+      <td>BAKING SET 9 PIECE RETROSPOT</td>
+      <td>3.0</td>
+      <td>2011-12-09 12:50:00</td>
+      <td>12.0</td>
+      <td>2011.0</td>
+      <td>PM</td>
+      <td>4.95</td>
+      <td>12680.0</td>
+      <td>France</td>
+      <td>14.85</td>
+    </tr>
+    <tr>
+      <th>541909</th>
+      <td>581587</td>
+      <td>POST</td>
+      <td>POSTAGE</td>
+      <td>1.0</td>
+      <td>2011-12-09 12:50:00</td>
+      <td>12.0</td>
+      <td>2011.0</td>
+      <td>PM</td>
+      <td>18.00</td>
+      <td>12680.0</td>
+      <td>France</td>
+      <td>18.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>1067372 rows × 12 columns</p>
+</div>
+  </div></body></html>
